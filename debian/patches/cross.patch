@@ -1,0 +1,41 @@
+Description: Fix FTCBFS (#966685) by correctly passing the CC variable.
+Author: Helmut Grohne <helmut@subdivi.de>
+--- inchi-1.03+dfsg.orig/INCHI_API/gcc_so_makefile/makefile
++++ inchi-1.03+dfsg/INCHI_API/gcc_so_makefile/makefile
+@@ -53,9 +53,14 @@
+ endif
+ INCHI_MAIN_PATHNAME = $(LIB_DIR)/$(INCHI_MAIN_NAME)
+ 
++# === C Compiler ===============
++ifndef C_COMPILER
++  C_COMPILER = $(CC)
++endif
++
+ # === Linker to create (Shared) InChI library ====
+ ifndef SHARED_LINK
+-  SHARED_LINK = gcc -shared
++  SHARED_LINK = $(C_COMPILER) -shared
+ endif
+ 
+ # === Linker to create Main program =====
+@@ -65,7 +70,7 @@
+      LINKER_CWD_PATH = -Wl,-R,""
+   endif
+   endif
+-  LINKER = gcc -s $(LINKER_CWD_PATH)
++  LINKER = $(C_COMPILER) -s $(LINKER_CWD_PATH)
+ endif
+ 
+ ifndef P_LIBR
+@@ -77,11 +82,6 @@
+ endif
+ 
+ 
+-# === C Compiler ===============
+-ifndef C_COMPILER
+-  C_COMPILER = gcc
+-endif
+-
+ # === C Compiler Options =======
+ ifndef C_OPTIONS
+   C_OPTIONS = `dpkg-buildflags --get CPPFLAGS` -ansi `dpkg-buildflags --get CFLAGS` -c

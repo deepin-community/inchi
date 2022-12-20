@@ -1,0 +1,33 @@
+inchi (1.03+dfsg-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 17:58:20 +0800
+
+inchi (1.03+dfsg-4) unstable; urgency=medium
+
+  * Bumping debhelper-compat (no changes).
+  * Packaging inchi_main executable (Closes: #994288).
+  * Fixing the watch file.
+  * Homepage: HTTP -> HTTPS.
+
+ -- Andrius Merkys <merkys@debian.org>  Thu, 16 Sep 2021 02:55:02 -0400
+
+inchi (1.03+dfsg-3) unstable; urgency=medium
+
+  * Adding patch to fix FTCBFS (Closes: #966685). Thanks Helmut Grohne.
+
+ -- Andrius Merkys <merkys@debian.org>  Mon, 03 Aug 2020 02:45:52 -0400
+
+inchi (1.03+dfsg-2) unstable; urgency=medium
+
+  * Describing rationale of packaging 1.03 instead of any later version.
+  * Adding Rules-Requires-Root: no.
+
+ -- Andrius Merkys <merkys@debian.org>  Mon, 11 Nov 2019 07:04:57 -0500
+
+inchi (1.03+dfsg-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #814867)
+
+ -- Andrius Merkys <merkys@debian.org>  Wed, 04 Sep 2019 09:04:43 -0400

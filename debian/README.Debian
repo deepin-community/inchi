@@ -1,0 +1,6 @@
+InChI version 1.03 is packaged instead of the newer versions intentionally,
+as v1.03 is the last LGPL-licensed version of InChI software. Later
+versions have been released under InChI Trust License, whose compliance
+with the DFSG is unclear (see #814867 for example).
+
+Andrius Merkys <merkys@debian.org>

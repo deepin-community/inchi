@@ -1,0 +1,51 @@
+inchi_main(1)
+=============
+
+Name
+----
+inchi_main - InChI library call example
+
+Synopsis
+--------
+'inchi_main inputFile [outputFile [logFile [problemFile]]] [-option[ -option...]]'
+
+Options
+-------
+
+.Input
+- STDIO:       Use standard input/output streams
+- InpAux:      Input structures in InChI default aux. info format (for use with STDIO)
+- SDF:DataHeader: Read from the input SDfile the ID under this DataHeader
+
+.Output
+- AuxNone:     Omit auxiliary information (default: Include)
+- SaveOpt:     Save custom InChI creation options (non-standard InChI)
+- NoLabels:    Omit structure number, DataHeader and ID from InChI output
+- Tabbed:      Separate structure number, InChI, and AuxInfo with tabs
+- OutputSDF:   Convert InChI created with default aux. info to SDfile
+- SdfAtomsDT:  Output Hydrogen Isotopes to SDfile as Atoms D and T
+
+.Structure perception
+- SNon:        Exclude stereo (default: include absolute stereo)
+- NEWPSOFF:    Both ends of wedge point to stereocenters (default: a narrow end)
+- DoNotAddH:   All H are explicit (default: add H according to usual valences)
+
+.Stereo perception modifiers (non-standard InChI)
+- SRel:        Relative stereo
+- SRac:        Racemic stereo
+- SUCF:        Use Chiral Flag: On means Absolute stereo, Off - Relative
+
+.Customizing InChI creation (non-standard InChI)
+- SUU:         Always include omitted unknown/undefined stereo
+- SLUUD:       Make labels for unknown and undefined stereo different
+- RecMet:      Include reconnected metals results
+- FixedH:      Include Fixed H layer
+- KET:         Account for keto-enol tautomerism (experimental)
+- 15T:         Account for 1,5-tautomerism (experimental)
+
+.Generation
+- Wnumber:     Set time-out per structure in seconds; W0 means unlimited
+- WarnOnEmptyStructure: Warn and produce empty InChI for empty structure
+- Key:         Generate InChIKey
+- XHash1:      Generate hash extension (to 256 bits) for 1st block of InChIKey
+- XHash2:      Generate hash extension (to 256 bits) for 2nd block of InChIKey

@@ -1,0 +1,32 @@
+Description: Pass the build flags.
+Author: Daniel Leidert <dleidert@debian.org>
+--- a/INCHI_API/gcc_so_makefile/makefile
++++ b/INCHI_API/gcc_so_makefile/makefile
+@@ -84,7 +84,7 @@
+ 
+ # === C Compiler Options =======
+ ifndef C_OPTIONS
+-  C_OPTIONS = -ansi -O3 -c
++  C_OPTIONS = `dpkg-buildflags --get CPPFLAGS` -ansi `dpkg-buildflags --get CFLAGS` -c
+   ifndef windir
+   ifdef ISLINUX
+     ifndef C_SO_OPTIONS
+@@ -138,7 +138,7 @@
+ 
+ $(INCHI_MAIN_PATHNAME) : $(INCHI_MAIN_OBJS) $(INCHI_LIB_PATHNAME).so$(VERSION)
+ 	$(LINKER) -o $(INCHI_MAIN_PATHNAME) $(INCHI_MAIN_OBJS) \
+-  $(INCHI_LIB_PATHNAME).so$(VERSION) -lm
++  $(INCHI_LIB_PATHNAME).so$(VERSION) -lm `dpkg-buildflags --get LDFLAGS`
+ 
+ endif
+ 
+@@ -213,7 +213,8 @@
+ 	$(SHARED_LINK) $(SHARED_LINK_PARM) -o \
+   $(INCHI_LIB_PATHNAME).so$(VERSION) \
+   $(INCHI_LIB_OBJS) \
+-  -Wl$(LINUX_MAP)$(LINUX_Z_RELRO),-soname,$(INCHI_LIB_NAME).so$(MAIN_VERSION)
++  -Wl$(LINUX_MAP)$(LINUX_Z_RELRO),-soname,$(INCHI_LIB_NAME).so$(MAIN_VERSION) \
++  `dpkg-buildflags --get LDFLAGS`
+ 	ln -fs $(INCHI_LIB_NAME).so$(VERSION) \
+   $(INCHI_LIB_PATHNAME).so$(MAIN_VERSION)
+ 
